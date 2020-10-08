@@ -10,7 +10,9 @@
     <style>
         #borderimg {
             border: 100px solid transparent;
-            border-image: url(./images/frame4.png) 18% round;
+            border-image-source: url(./images/frame0.png);
+            border-image-slice: 18%;
+            border-image-repeat: round;
         }
 
         .row {
@@ -189,8 +191,10 @@
 
                                         </ul>
                                         </p>
-                                        <button type="submit" onclick="changeBorderImage()" value="'{" image" : "4"
-                                            }'">SELECT</button>
+                                        <button id="image" value='{"image": "2"}'>
+                                            Select
+                                        </button>
+
                                     </div>
                                 </div>
                             </div>
@@ -230,14 +234,7 @@
 
     <script>
 
-        $("#width").on('change', function () {
 
-            var width = document.getElementById('width').value;
-
-            var borderProperty = "url(./images/frame4.png)" + width + "% round";
-
-            $("#borderimg").css("border-image", borderProperty);
-        })
 
         $("#height").on('change', function () {
 
@@ -247,6 +244,15 @@
 
             $("#uploaded-image").css("margin-top", borderProperty);
             $("#uploaded-image").css("margin-bottom", borderProperty);
+        })
+
+        $("#width").on('change', function () {
+
+            var width = document.getElementById('width').value;
+
+            var borderProperty = width + "%";
+
+            $("#borderimg").css("border-image-slice", borderProperty);
         })
 
         $("#sizes").on('change select', function () {
@@ -260,9 +266,21 @@
             document.getElementById("width").value = width;
             document.getElementById("height").value = height;
 
-            var borderProperty = "url(./images/frame4.png)" + width + "% round";
+            var borderProperty = width + "%";
 
-            $("#borderimg").css("border-image", borderProperty);
+            $("#borderimg").css("border-image-slice", borderProperty);
+
+        })
+
+        $("#image").on('click', function () {
+
+            var size = $.parseJSON($(this).val());
+            var number = size['image'];
+            console.log(number);
+
+            var borderProperty = "url(./images/frame" + number + ".png)";
+
+            $("#borderimg").css("border-image-source", borderProperty);
 
         })
 
@@ -295,12 +313,7 @@
             evt.currentTarget.className += " active";
         }
 
-        function changeBorderImage() {
-            var image = $.parseJSON($(this).val());
-            var setImage = image['setImage'];
-            Set frameDisplay =  
 
-        }
     </script>
 
 </body>
