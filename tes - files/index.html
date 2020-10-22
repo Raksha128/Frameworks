@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <style>
+    body {
+      margin: 0px;
+      padding: 0px;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="myCanvas" width="500" height="500"></canvas>
+  <script>
+    var canvas = document.getElementById('myCanvas');
+    var context = canvas.getContext('2d');
+
+    var imageObjleft = new Image();
+    imageObjleft.onload = function () {
+      var ptrn = context.createPattern(imageObjleft, 'repeat-y')
+      context.fillStyle = ptrn;
+      context.fillRect(0, 0, canvas.width, canvas.height);
+
+    };
+    imageObjleft.src = 'https://www.frameshop.com.au/images/frame_images/large/top_frame_238.jpg?v=7';
+
+    var imageObj1 = new Image();
+
+    imageObj1.onload = function () {
+      var ptrn1 = context.createPattern(imageObj1, 'repeat-x')
+      context.fillStyle = ptrn1;
+      context.fillRect(0, 0, canvas.width, canvas.height);
+
+    };
+    imageObj1.src = 'https://www.frameshop.com.au/images/frame_images/large/top_frame_238.jpg?v=7';
+
+    var imageObj2 = new Image();
+
+    imageObj2.onload = function () {
+      var ptrn2 = context.createPattern(imageObj2, 'repeat')
+      context.fillStyle = ptrn2;
+      context.fillRect(0, 0, canvas.width, canvas.height);
+
+    };
+    imageObj2.src = 'https://www.frameshop.com.au/images/frame_images/large/top_frame_238.jpg?v=7';
+
+    var imageObj3 = new Image();
+
+    imageObj3.onload = function () {
+      var ptrn3 = context.createPattern(imageObj3, 'repeat')
+      context.fillStyle = ptrn3;
+      context.fillRect(0, 0, canvas.width, canvas.height);
+
+    };
+    imageObj3.src = 'https://www.frameshop.com.au/images/frame_images/large/top_frame_238.jpg?v=7';
+
+
+    var imageObj = new Image();
+
+    imageObj.onload = function () {
+      context.drawImage(imageObj, 0 + imageObjleft.naturalWidth, 0 + imageObj2.naturalHeight, canvas.width - 2 * imageObj3.naturalWidth, canvas.height - 2 * imageObj2.naturalHeight);
+    };
+    imageObj.src = 'http://www.html5canvastutorials.com/demos/assets/darth-vader.jpg';
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

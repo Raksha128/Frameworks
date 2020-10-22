@@ -1,0 +1,146 @@
+body {
+    background: #E5E5E5;
+  }
+
+.page-cpf {
+  min-height: 100vh;
+}
+
+.sec-selections {
+  flex-basis: 40%;
+}
+
+.sec-selections h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.sec-selections > div {
+  margin-bottom: 1.5rem;
+}
+
+.sec-selections ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+} 
+
+.sec-selections ul > li {
+  margin-right: 1rem;
+  padding: 1px;
+  border: 3px solid #ffffff;
+  cursor: pointer;
+  line-height: 0.8;
+}
+
+.sec-selections ul > li:last-child {
+  margin-right: 0;
+}
+
+.sec-frame div {
+  position: relative;
+  width: 600px;
+  height: 600px;
+}
+
+.sec-text label {
+  margin-right: 1rem;
+}
+
+#canvasFrGr, #canvasBkGr, #canvasText {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#canvasBkGr {
+  z-index: 0;
+}
+
+#canvasFrGr {
+  z-index: 1;
+}
+
+#canvasText {
+  z-index: 2;
+}
+
+
+
+  .row {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid black;
+  }
+
+  .tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+
+  #scrollable {
+    overflow: auto;
+    width: 100%;
+    height: 200px;
+  }
+
+  #frame_items {
+    width: 3000px;
+    /* itemWidth x itemCount */
+  }
+
+  .item {
+    float: left;
+  }
+
+  .dot {
+    height: 35px;
+    width: 35px;
+   
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .side-tab-1 {
+    background: white;
+    padding: 5%;
+  }
