@@ -27,8 +27,8 @@
 
         <div class="sec-frame" style="text-align: center;">
           <div>
-            <canvas id="canvasFrGr" width="600px" height="600px" style="max-width: 100%;max-height: 600px;"></canvas>
-            <canvas id="canvasBkGr" width="600px" height="600px" style="max-width: 100%;max-height: 600px;"></canvas>
+            <canvas id="canvasFrGr" width="600px" height="800px"></canvas>
+            <canvas id="canvasBkGr" width="600px" height="800px"></canvas>
           </div>
         </div>
 
@@ -39,40 +39,48 @@
           <div id="side-tab-1">
             <button type="button" class="btn btn-dark" style="background : black">
               <input id="fileUpload" type='file' onchange="readURL(this)" /></button>
-            <!-- <div class="sec-frames">
-              <h3>Select frame</h3>
-              <ul class="frame-list">
-                
-                <li class="pic1">
-                  <img id="uploadedimage" data-src="#" alt="" />
-                </li>
-              </ul>
-            </div> -->
+
             <div class="select is-fullwidth" style="padding-top: 1%;">
 
               <p>
                 SELECT SIZE : <br>
                 <span>WIDTH : </span>
-                <input type="number" id="width" min="15" max="30" aria-label="image width" step="0.1">
+                <input type="number" id="width" min="10" max="30" aria-label="image width" step="0.1">
                 &nbsp;
                 <span>HEIGHT : </span>
-                <input type="number" id="height" min="10" max="30" aria-label="image height" step="0.1">
+                <input type="number" id="height" min="10" max="40" aria-label="image height" step="0.1">
               </p>
               <br>
               <p>
                 SELECT FROM STANDARD SIZE : </p>
               <select id="sizes">
                 <option value="">Standard Sizes</option>
-                <option value='{"width": "40", "height": "40"}'>4" x 6" (10.2 x 15.2 cm)</option>
-                <option value='{"width": "37", "height": "35"}'>5" x 7" (12.7 x 17.8 cm)</option>
-                <option value='{"width": "35", "height": "33"}'>6" x 8" (15.2 x 20.3 cm)</option>
-                <option value='{"width": "33", "height": "31"}'>8" x 10" (20.3 x 25.4 cm)</option>
-                <option value='{"width": "31", "height": "29"}'>8" x 12" (20.3 x 30.5 cm)</option>
-                <option value='{"width": "29", "height": "27"}'>11" x 14" (27.9 x 35.6 cm)</option>
-                <option value='{"width": "27", "height": "25"}'>12" x 16" (30.5 x 40.6 cm)</option>
-                <option value='{"width": "25", "height": "23"}'>16" x 20" (40.6 x 50.8 cm)</option>
-                <option value='{"width": "23", "height": "21"}'>16" x 24" (40.6 x 61.0 cm)</option>
-                <option value='{"width": "21", "height": "19"}'>18" x 24" (45.6 x 61.0 cm)</option>
+                <option value='{"width": "40", "height": "37",  "vwidth":"10.2", "vheight":"15.2" }'>4" x 6" (10.2 x
+                  15.2 cm)</option>
+                <option value='{"width": "37", "height": "35", "vwidth":"12.7", "vheight":"17.8" }'>5" x 7" (12.7 x 17.8
+                  cm)</option>
+                <option value='{"width": "35", "height": "33",  "vwidth":"15.2", "vheight":"20.3" }'>6" x 8" (15.2 x
+                  20.3 cm)</option>
+                <option value='{"width": "33", "height": "31", "vwidth":"20.3", "vheight":"25.4" }'>8" x 10" (20.3 x
+                  25.4 cm)</option>
+                <option value='{"width": "31", "height": "29",  "vwidth":"20.3", "vheight":"30.5" }'>8" x 12" (20.3 x
+                  30.5 cm)
+                </option>
+                <option value='{"width": "29", "height": "27",  "vwidth":"27.9", "vheight":"35.6" }'>11" x 14" (27.9 x
+                  35.6 cm)
+                </option>
+                <option value='{"width": "27", "height": "25",  "vwidth":"30.5", "vheight":"40.6" }'>12" x 16" (30.5 x
+                  40.6 cm)
+                </option>
+                <option value='{"width": "25", "height": "23",  "vwidth":"40.6", "vheight":"50.8" }'>16" x 20" (40.6 x
+                  50.8 cm)
+                </option>
+                <option value='{"width": "23", "height": "21",  "vwidth":"40.6", "vheight":"61.0" }'>16" x 24" (40.6 x
+                  61.0 cm)
+                </option>
+                <option value='{"width": "21", "height": "19", "vwidth":"45.6", "vheight":"61.0" }'>18" x 24" (45.6 x
+                  61.0 cm)
+                </option>
                 <optgroup label="B">
                   <option value='{"width": "18", "height": "18"}'>B1 (70.7 x 100.0 cm)</option>
                   <option value='{"width": "24", "height": "22"}'>B2 (50.0 x 70.7 cm)</option>
@@ -91,23 +99,115 @@
           <br>
           <div id="side-tab-2">
             <div class="tab">
-              <button class="tablinks" onclick="openTab(event, 'frames')">Frames</button>
+              <button class="tablinks" onclick="openTab(event, 'whiteframe')">Frames</button>
               <button class="tablinks" onclick="openTab(event, 'mats')">Mats</button>
               <button class="tablinks" onclick="openTab(event, 'glass')">Glass & Backing</button>
               <button class="tablinks" onclick="openTab(event, 'print')">Printing</button>
 
             </div>
 
-            <div id="frames" class="tabcontent">
+            <div id="mats" class="tabcontent">
+              
+              <fieldset>
+                <legend>Choose core color</legend>
+                <div>
+                  <input type="radio" id="whitecore" name="corecolor" value="white">
+                  <label for="white">White Core</label>
+                </div>
+                <div>
+                  <input type="radio" id="blackcore" name="corecolor" value="black">
+                  <label for="balck">Black Core</label>
+                </div>
+                <div>
+                  <input type="radio" id="nocore" name="corecolor" value="none">
+                  <label for="none">None</label>
+                </div>
+                <div>
+                  <input type="radio" id="doublewcore" name="corecolor" value="none">
+                  <label for="doublewcore">Double White Core</label>
+                </div>
+                <div>
+                  <input type="radio" id="doublebcore" name="corecolor" value="none">
+                  <label for="doublebcore">Double Black Core</label>
+                </div>
+              </fieldset>
+              <button class="tablinks" onclick="openTab(event, 'wmats')">White Core Mats</button>
+              <button class="tablinks" onclick="openTab(event, 'bmats')">Black Core Mats</button>
+              <br>
 
+            </div>
+
+            <div id="wmats" class="tabcontent">
+              <button class="tablinks" onclick="openTab(event, 'wmats')">White Core Mats</button>
+              <button class="tablinks" onclick="openTab(event, 'bmats')">Black Core Mats</button>
+              <button class="tablinks" onclick="openTab(event, 'mats')">Core Type</button>
+              <br>
+
+              <br>
+              <br>
+              <%
+              if(matwdata.length!=0){
+              var i=1;
+              matwdata.forEach(function(data){
+              %>
+              <div>
+                <p> <%=data.MTCOLOR %> : <%=data.MTCODE %></p>
+                <button id="<%=data.MTID %>" style="
+             border: azure;" value="<%=data.MTCODE %>" class="colorbutton">
+                  <span class="dot" style="background: <%=data.MTCODE %>;"></span>
+                </button>
+              </div>
+              <%  i++; }) %>
+              <% } else{ %>
+              <tr>
+                <td colspan="7">No Data Found</td>
+              </tr>
+              <% } %>
+
+
+            </div>
+            <div id="bmats" class="tabcontent">
+              <button class="tablinks" onclick="openTab(event, 'wmats')">White Core Mats</button>
+              <button class="tablinks" onclick="openTab(event, 'bmats')">Black Core Mats</button>
+              <button class="tablinks" onclick="openTab(event, 'mats')">Core Type</button>
+
+              <br>
+              <%
+              if(matbdata.length!=0){
+              var i=1;
+              matbdata.forEach(function(data){
+              %>
+              <div>
+                <p> <%=data.MTCOLOR %> : <%=data.MTCODE %></p>
+                <button id="<%=data.MTID %>" style="
+             border: azure;" value="<%=data.MTCODE %>" class="colorbutton">
+                  <span class="dot" style="background: <%=data.MTCODE %>;"></span>
+                </button>
+              </div>
+              <%  i++; }) %>
+              <% } else{ %>
+              <tr>
+                <td colspan="7">No Data Found</td>
+              </tr>
+              <% } %>
+
+
+            </div>
+
+            <div id="whiteframe" class="tabcontent">
               <p>Select frames as per your choice!</p>
+
+              <button class="tablinks" onclick="openTab(event, 'whiteframe')">WHITE</button>
+              <button class="tablinks" onclick="openTab(event, 'goldframe')">GOLD</button>
+              <button class="tablinks" onclick="openTab(event, 'onsaleframe')">ONSALE</button>
+              <button class="tablinks" onclick="openTab(event, 'popularframe')">POPULAR</button>
               <div id="scrollable">
 
                 <div id="frame_items">
                   <%
-                if(userData.length!=0){
+                if(whiteframe.length!=0){
                 var i=1;
-                userData.forEach(function(data){
+                whiteframe.forEach(function(data){
                 %>
                   <div class="item" style="padding:10px;">
 
@@ -160,70 +260,443 @@
               </div>
             </div>
 
-            <div id="mats" class="tabcontent">
+            <div id="goldframe" class="tabcontent">
+              <p>Select frames as per your choice!</p>
+
+              <button class="tablinks" onclick="openTab(event, 'whiteframe')">WHITE</button>
+              <button class="tablinks" onclick="openTab(event, 'goldframe')">GOLD</button>
+              <button class="tablinks" onclick="openTab(event, 'onsaleframe')">ONSALE</button>
+              <button class="tablinks" onclick="openTab(event, 'popularframe')">POPULAR</button>
+              <div id="scrollable">
+
+                <div id="frame_items">
+                  <%
+                if(goldframe.length!=0){
+                var i=1;
+                goldframe.forEach(function(data){
+                %>
+                  <div class="item" style="padding:10px;">
+
+                    <div class="card" style="width: 18rem; background:#f1f0f0; padding: 5%; text-align: center;"
+                      id="cardi">
+
+                      <img class="card-img-top" src="http://localhost:3000/<%=data.FRTHIMG %>" alt="Card image cap"
+                        data-src="<%=data.FRIMG %>" style="width: 30px;" id="<%=data.FRID %>">
+                      <div class="card-body" style="text-align: center;">
+                        <h5 class="card-title">CODE :<%=data.FRCODE %></h5>
+                        <p class="card-text">
+
+                        <ul style="text-align: start;">
+                          <li>
+                            Width : <%=data.FRWIDTH %> cm
+                          </li>
+                          <li>
+                            Depth : <%=data.FRDEPTH %> cm
+                          </li>
+                          <li>
+                            Rebate : <%=data.FRREBATE %> cm
+                          </li>
+                          <li>
+                            Material : <%=data.FRMATERIAL %>
+                          </li>
+                          <li>
+                            Color :<%=data.FRCOLOR %>
+                          </li>
+                          <li>
+                            Price Rate : <%=data.FRPRICE %>
+                          </li>
+
+                        </ul>
+                        </p>
 
 
-              <button class="tablinks" onclick="openTab(event, 'white')">Select Mat</button>
+                      </div>
+                    </div>
+                  </div>
+                  <%  i++; }) %>
+                  <% } else{ %>
+                  <tr>
+                    <td colspan="7">No Data Found</td>
+                  </tr>
+                  <% } %>
 
-            </div>
-            <div id="white" class="tabcontent">
-              <fieldset>
-                <legend>Choose core color</legend>
-                <div>
-                  <input type="checkbox" id="whitecore" name="corecolor" value="white">
-                  <label for="coding">White Core</label>
+
+
                 </div>
-                <div>
-                  <input type="checkbox" id="blackcore" name="corecolor" value="black">
-                  <label for="music">Black Core</label>
-                </div>
-              </fieldset>
-              <br>
-              <br>
-              <%
-              if(row.length!=0){
-              var i=1;
-              row.forEach(function(data){
-              %>
-              <p> <%=data.MTCOLOR %> : <%=data.MTCODE %></p>
-              <button id="buble" style="background: white;
-           border: azure;" value='{"color": " <%=data.MTCODE %>"}'>
-                <span class="dot" style="background: #<%=data.MTCODE %>;"></span>
-              </button>
-              <%  i++; }) %>
-              <% } else{ %>
-              <tr>
-                <td colspan="7">No Data Found</td>
-              </tr>
-              <% } %>
+              </div>
             </div>
-            <!-- <div id="black" class="tabcontent">
-            <button class="tablinks" onclick="openTab(event, 'white')">WHITE CORE</button>
-            <button class="tablinks" onclick="openTab(event, 'black')">BLACK CORE</button>
-            <button class="tablinks" onclick="openTab(event, 'museum')">MUSEUM</button>
-            <h3>black</h3>
-            <p>Tokyo is the capital of Japan.</p>
-          </div>
-          <div id="museum" class="tabcontent">
-            <button class="tablinks" onclick="openTab(event, 'white')">WHITE CORE</button>
-            <button class="tablinks" onclick="openTab(event, 'black')">BLACK CORE</button>
-            <button class="tablinks" onclick="openTab(event, 'museum')">MUSEUM</button>
-            <h3>museum</h3>
-            <p>Tokyo is the capital of Japan.</p>
-          </div> -->
+            <div id="popularframe" class="tabcontent">
+              <p>Select frames as per your choice!</p>
+
+              <button class="tablinks" onclick="openTab(event, 'whiteframe')">WHITE</button>
+              <button class="tablinks" onclick="openTab(event, 'goldframe')">GOLD</button>
+              <button class="tablinks" onclick="openTab(event, 'onsaleframe')">ONSALE</button>
+              <button class="tablinks" onclick="openTab(event, 'popularframe')">POPULAR</button>
+              <div id="scrollable">
+
+                <div id="frame_items">
+                  <%
+                if(popularframe.length!=0){
+                var i=1;
+                popularframe.forEach(function(data){
+                %>
+                  <div class="item" style="padding:10px;">
+
+                    <div class="card" style="width: 18rem; background:#f1f0f0; padding: 5%; text-align: center;"
+                      id="cardi">
+
+                      <img class="card-img-top" src="http://localhost:3000/<%=data.FRTHIMG %>" alt="Card image cap"
+                        data-src="<%=data.FRIMG %>" style="width: 30px;" id="<%=data.FRID %>">
+                      <div class="card-body" style="text-align: center;">
+                        <h5 class="card-title">CODE :<%=data.FRCODE %></h5>
+                        <p class="card-text">
+
+                        <ul style="text-align: start;">
+                          <li>
+                            Width : <%=data.FRWIDTH %> cm
+                          </li>
+                          <li>
+                            Depth : <%=data.FRDEPTH %> cm
+                          </li>
+                          <li>
+                            Rebate : <%=data.FRREBATE %> cm
+                          </li>
+                          <li>
+                            Material : <%=data.FRMATERIAL %>
+                          </li>
+                          <li>
+                            Color :<%=data.FRCOLOR %>
+                          </li>
+                          <li>
+                            Price Rate : <%=data.FRPRICE %>
+                          </li>
+
+                        </ul>
+                        </p>
+
+
+                      </div>
+                    </div>
+                  </div>
+                  <%  i++; }) %>
+                  <% } else{ %>
+                  <tr>
+                    <td colspan="7">No Data Found</td>
+                  </tr>
+                  <% } %>
+
+
+
+                </div>
+              </div>
+            </div>
+            <div id="onsaleframe" class="tabcontent">
+              <p>Select frames as per your choice!</p>
+
+              <button class="tablinks" onclick="openTab(event, 'whiteframe')">WHITE</button>
+              <button class="tablinks" onclick="openTab(event, 'goldframe')">GOLD</button>
+              <button class="tablinks" onclick="openTab(event, 'onsaleframe')">ONSALE</button>
+              <button class="tablinks" onclick="openTab(event, 'popularframe')">POPULAR</button>
+              <div id="scrollable">
+
+                <div id="frame_items">
+                  <%
+                if(onsaleframe.length!=0){
+                var i=1;
+                onsaleframe.forEach(function(data){
+                %>
+                  <div class="item" style="padding:10px;">
+
+                    <div class="card" style="width: 18rem; background:#f1f0f0; padding: 5%; text-align: center;"
+                      id="cardi">
+
+                      <img class="card-img-top" src="http://localhost:3000/<%=data.FRTHIMG %>" alt="Card image cap"
+                        data-src="<%=data.FRIMG %>" style="width: 30px;" id="<%=data.FRID %>">
+                      <div class="card-body" style="text-align: center;">
+                        <h5 class="card-title">CODE :<%=data.FRCODE %></h5>
+                        <p class="card-text">
+
+                        <ul style="text-align: start;">
+                          <li>
+                            Width : <%=data.FRWIDTH %> cm
+                          </li>
+                          <li>
+                            Depth : <%=data.FRDEPTH %> cm
+                          </li>
+                          <li>
+                            Rebate : <%=data.FRREBATE %> cm
+                          </li>
+                          <li>
+                            Material : <%=data.FRMATERIAL %>
+                          </li>
+                          <li>
+                            Color :<%=data.FRCOLOR %>
+                          </li>
+                          <li>
+                            Price Rate : <%=data.FRPRICE %>
+                          </li>
+
+                        </ul>
+                        </p>
+
+
+                      </div>
+                    </div>
+                  </div>
+                  <%  i++; }) %>
+                  <% } else{ %>
+                  <tr>
+                    <td colspan="7">No Data Found</td>
+                  </tr>
+                  <% } %>
+
+
+
+                </div>
+              </div>
+            </div>
 
 
 
             <div id="glass" class="tabcontent">
-              <p>Glass options...</p>
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <h3>GLASS</h3>
+                  <div>
+                    <input type="radio" id="0" name="glass1" value="Clear Glass" onclick="getdetail(this)">
+                    <label for="glass1">Clear Glass</label>
+                  </div>
+                  <div>
+                    <input type="radio" id="1" name="glass1" value="Clear Perspex" onclick="getdetail(this)">
+                    <label for="glass1">Clear Perspex</label>
+                  </div>
+                  <div>
+                    <input type="radio" id="2" name="glass1" value="Non-Reflective Glass" onclick="getdetail(this)">
+                    <label for="glass1">Non-Reflective Glass</label>
+                  </div>
+                  <div>
+                    <input type="radio" id="3" name="glass1" value="UV Clear Glass" onclick="getdetail(this)">
+                    <label for="glass1">UV Clear Glass</label>
+                  </div>
+                  <div>
+                    <input type="radio" id="4" name="glass1" value="UV Non-Reflective Glass" onclick="getdetail(this)">
+                    <label for="glass1">UV Non-Reflective Glass</label>
+                  </div>
+                  <div>
+                    <input type="radio" id="5" name="glass1" value="NO Glass" onclick="getdetail(this)">
+                    <label for="glass1">NO Glass</label>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <h3>Glass Details</h3>
+                  <p id="glass-details"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <h3>Backing</h3>
+                  <div>
+                    <input type="radio" id="0" name="back" value="MDF (Wood)" onclick="getbackdetail(this)">
+                    <label for="back">MDF (Wood)</label>
+                  </div>
+                  <div>
+                    <input type="radio" id="1" name="back" value="Adhesive Foamcore" onclick="getbackdetail(this)">
+                    <label for="back">Adhesive Foamcore</label>
+                  </div>
+                  <div>
+                    <input type="radio" id="2" name="back" value="Non-Adhesive Foamcore" onclick="getbackdetail(this)">
+                    <label for="back">Non-Adhesive Foamcore</label>
+                  </div>
+                  <div>
+                    <input type="radio" id="3" name="back" value="No Backing" onclick="getbackdetail(this)">
+                    <label for="back">No Backing</label>
+                  </div>
+
+                </div>
+                <div class="col-sm-6">
+                  <h3>Backing Details</h3>
+                  <p id="back-details"></p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-12">
+                  <h3>
+                    Hanging System
+
+                  </h3>
+                  <p>The hanging system will be set up for your frame as you see it in the preview.</p>
+                  <div>
+                    <input type="radio" id="hanger" name="hanger" value="Standback + Hanger"
+                      onclick="gethangerdetail(this)">
+                    <label for="back">Standback + Hanger</label>
+                  </div>
+                  <div>
+                    <input type="radio" id="hanger" name="hanger" value="Metal Hanger" onclick="gethangerdetail(this)">
+                    <label for="back">Metal Hanger</label>
+                  </div>
+                  <div>
+                    <input type="radio" id="hanger" name="hanger" value="D-rings & String"
+                      onclick="gethangerdetail(this)">
+                    <label for="back">D-rings & String</label>
+                  </div>
+                </div>
+              </div>
+
             </div>
             <div id="print" class="tabcontent">
-              <p>Printing options...</p>
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <h3>Printing</h3>
+
+
+                  <div>
+                    <input type="radio" id="0" name="print" value="Semi-Gloss (Luster)" onclick="getprintdetail(this)">
+                    <label for="print">Semi-Gloss (Luster)</label>
+                  </div>
+                  <div>
+                    <input type="radio" id="1" name="print" value="High Gloss (Metallic)"
+                      onclick="getprintdetail(this)">
+                    <label for="print">High Gloss (Metallic)</label>
+                  </div>
+                  <div>
+                    <input type="radio" id="2" name="print" value="Matte Smooth (Archival)"
+                      onclick="getprintdetail(this)">
+                    <label for="print">Matte Smooth (Archival)</label>
+                  </div>
+                  <div>
+                    <input type="radio" id="3" name="print" value="No Printing (preview only)"
+                      onclick="getprintdetail(this)">
+                    <label for="print">No Printing (preview only)</label>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <h3>Printing Details</h3>
+                  <p id="print-details"></p>
+                </div>
+              </div>
             </div>
 
 
           </div>
           <br>
+          <div id="side-tab-3">
+            <h4>PRODUCT SUMMARY :</h4>
+            <!-- <div>
+              <h4>BULK BUY:</h2>
+                <div class="select"><select name="bulk_option" id="bulk_option" title="Bulk Options">
+                    <option value="">
+                      Select a pack size
+                    </option>
+                    <option value="10">
+                      Pack of 10 @ $10.80 each - Save 10%
+                    </option>
+                    <option value="25">
+                      Pack of 25 @ $10.20 each - Save 15%
+                    </option>
+                    <option value="50">
+                      Pack of 50 @ $9.60 each - Save 20%
+                    </option>
+                    <option value="100">
+                      Pack of 100 @ $9.00 each - Save 25%
+                    </option>
+                    <option value="250">
+                      Pack of 250 @ $8.40 each - Save 30%
+                    </option>
+                  </select>
+                </div>
+
+            </div> -->
+            <br>
+            <div>
+
+              <span>Select Quantity: </span>
+              <input type="number" id="quantity" min="1" max="999" aria-label="quantity" step="1">
+            </div>
+            <div>
+              <br>
+              <br>
+              <button onclick="htmlToJson()">ADD TO CART</button>
+              <div class="product-summary">
+                <br>
+                <table class="table is-striped is-narrow">
+                  <thead>
+                    <tr>
+                      <th>Items</th>
+                      <th>Product Summary</th>
+                      <th>Price Breakdown</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="product-summary">
+                      <td>Frame</td>
+                      <td id="selected-frame"></td>
+                      <td></td>
+                    </tr>
+                    <tr class="product-summary">
+                      <td>Glass</td>
+                      <td id="selected-glass"></td>
+                      <td></td>
+                    </tr>
+                    <tr class="product-summary">
+                      <td>Backing</td>
+                      <td id="selected-backing"></td>
+                      <td></td>
+                    </tr>
+                    <tr class="product-summary">
+                      <td>Hanger</td>
+                      <td id="selected-hanger"></td>
+                      <td></td>
+                    </tr>
+                    <tr class="product-summary">
+                      <td>Printing</td>
+                      <td id="printing">No Printing</td>
+                      <td></td>
+                    </tr>
+                    <tr class="product-summary">
+                      <td>Image Size</td>
+                      <td id="imagesize"></td>
+                      <td></td>
+                    </tr>
+                    <tr class="product-summary">
+                      <td>Glass Size (approx)</td>
+                      <td id="glasssize"></td>
+                      <td></td>
+                    </tr>
+                    <tr class="product-summary__row">
+                      <td>Outside Size (approx)</td>
+                      <td id="outsidesize"></td>
+                      <td></td>
+                    </tr>
+                    <tr class="product-summary__row">
+
+                      <td>Total Quantity:</td>
+
+
+                      <td id="totalquantity"></td>
+                      <td></td>
+                    </tr>
+                    <tr class="product-summary__row">
+                      <td></td>
+                      <td>Total Cost :</td>
+
+                      <td id="totalprice"></td>
+                    </tr>
+                    <tr class="product-summary__row" style="visibility: hidden;">
+                      <td>Mat Selected</td>
+                      <td id="matcolor"></td>
+                      <td id="mattype"></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+          <br>
+
         </div>
 
 
@@ -237,62 +710,6 @@
     </div>
 
     <script src="/javascripts/main.js"></script>
-
-    <script>
-      // function readURL(input) {
-      //   if (input.files && input.files[0]) {
-      //     var reader = new FileReader();
-
-      //     reader.onload = function (e) {
-
-
-      //       photoImage = e.target.result;
-      //       imageDraw();
-
-      //     };
-
-      //     reader.readAsDataURL(input.files[0]);
-      //   }
-      // }
-
-      //function to set the height//
-      $("#height").on('change', function () {
-
-        var height = document.getElementById('height').value;
-
-        var borderProperty = height + 'px';
-
-        $("#uploaded-image").css("margin-top", borderProperty);
-        $("#uploaded-image").css("margin-bottom", borderProperty);
-      })
-
-      //function to set the width//
-
-      $("#width").on('change', function () {
-
-        var width = document.getElementById('width').value;
-
-        var borderProperty = width + "%";
-
-        $("#borderimg").css("border-image-slice", borderProperty);
-      })
-
-
-      //function to display tabs//
-      function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-          tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-          tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
-      }
-    </script>
   </main>
 </body>
 
