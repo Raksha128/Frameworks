@@ -70,9 +70,11 @@ if (document.getElementById('cus_Frame')) {
     $("#height").on('change', function () {
 
         height = document.getElementById('height').value;
+        width = document.getElementById('width').value;
 
-        ChangeHeight = height * 20;
-        frame_Width = height * 2;
+        ChangeHeight = height*113.38582677 ;
+
+        frame_Width = width<height? width*113.38582677 * 10/100:height*113.38582677*10/100;
 
         document.getElementById("canvasBkGr").style.height = ChangeHeight + 'px';
         frameadder();
@@ -89,10 +91,10 @@ if (document.getElementById('cus_Frame')) {
     $("#width").on('change', function () {
 
         width = document.getElementById('width').value;
+        height = document.getElementById('height').value;
 
-        ChangeWidth = width * 20;
-        frame_Width = width * 2;
-        console.log(ChangeWidth);
+        ChangeWidth = width*113.38582677;
+        frame_Width = width<height? width*113.38582677 * 10/100:height*113.38582677*10/100;
         document.getElementById("canvasBkGr").style.width = ChangeWidth + 'px';
 
         frameadder();
