@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="http://sdks.shopifycdn.com/js-buy-sdk/v2/latest/index.umd.min.js"></script>
   <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 
@@ -37,8 +38,12 @@
       <div class="col-md-5">
         <div style="background: whitesmoke; padding: 2%;">
           <div id="side-tab-1">
-            <button type="button" class="btn btn-dark" style="background : black">
-              <input id="fileUpload" type='file' onchange="readURL(this)" /></button>
+            <form id="fileupf" action="/upload" method="post" enctype="multipart/form-data">
+              <input id="fileUpload" type="file" id="fileup" onchange="readURL(this)" name="photo" accept="image/*" >
+              <input type="submit" id="btSubmit" value="upload" disabled>
+              <span id = "status"></span>
+         </form>
+           
 
             <div class="select is-fullwidth" style="padding-top: 1%;">
 

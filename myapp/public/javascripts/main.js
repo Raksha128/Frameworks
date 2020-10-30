@@ -1,4 +1,5 @@
 
+
 var frame_Width = 80;
 var ChangeHeight = 800;
 var ChangeWidth = 600;
@@ -520,20 +521,65 @@ if (document.getElementById('cus_Frame')) {
     })
 
 }
+$('#df').submit(function() {
+    $("#status").empty().text("File is uploading...");
+    $(this).ajaxSubmit({
+
+        error: function(xhr) {
+    status('Error: ' + xhr.status);
+        },
+
+        success: function(response) {
+    $("#status").empty().text(response);
+            console.log(response);
+        }
+});
+    //Very important line, it disable the page refresh.
+return false;
+});  
+
+$('#fileupf').submit(function (e) {
+    var bt = document.getElementById('btSubmit');
+    $("#status").empty().text("Photo uploading...");
+    e.preventDefault();
+    var fd = new FormData($(this)[0]);
+    $.ajax({
+        url: '/upload',
+        data: fd,
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        success: function(data){
+            $("#status").empty().text("Thank you for uploading");
+            bt.disabled = true;
+        }
+    });
+});
+
+
 //function to read input image and display//
 function readURL(input) {
+    var bt = document.getElementById('btSubmit');
+    
     if (input.files && input.files[0]) {
+        bt.disabled = false;
         var reader = new FileReader();
-
+        let img;
         reader.onload = function (e) {
 
             photoImage = e.target.result;
+            img=photoImage;
             imageDraw();
 
-        };
-
+        };       
         reader.readAsDataURL(input.files[0]);
     }
+    else{
+        bt.disabled = true;
+    }
+ 
+        
+    
 }
 
 // function to convert html table to json//
@@ -562,6 +608,9 @@ function htmlToJson() {
     var myObj = {
         "Cart Data": cart
     };
+    $.post("/shopify", { json_string:JSON.stringify(myObj) });
+
+
     alert(JSON.stringify(myObj));
 
 }
