@@ -23,18 +23,18 @@
 
 
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-md-7">
 
-        <div class="sec-frame" style="text-align: center;">
-          <div>
-            <canvas id="canvasFrGr" width="600px" height="800px"></canvas>
-            <canvas id="canvasBkGr" width="600px" height="800px"></canvas>
-          </div>
-        </div>
+
+
+        <canvas id="canvasFrGr" width="600px" height="800px"></canvas>
+        <canvas id="canvasBkGr" width="600px" height="800px"></canvas>
 
       </div>
 
-      <div class="col-sm-6" style="padding-left: 2%;padding-right: 2%;">
+
+
+      <div class="col-md-5">
         <div style="background: whitesmoke; padding: 2%;">
           <div id="side-tab-1">
             <button type="button" class="btn btn-dark" style="background : black">
@@ -82,125 +82,42 @@
                   61.0 cm)
                 </option>
                 <optgroup label="B">
-                  <option value='{"width": "18", "height": "18"}'>B1 (70.7 x 100.0 cm)</option>
-                  <option value='{"width": "24", "height": "22"}'>B2 (50.0 x 70.7 cm)</option>
+                  <option value='{"width": "18", "height": "18",  "vwidth":"70.7", "vheight":"100.0" }'>B1 (70.7 x 100.0
+                    cm)</option>
+                  <option value='{"width": "24", "height": "22",  "vwidth":"50.0", "vheight":"70.7" }'>B2 (50.0 x 70.7
+                    cm)</option>
                 </optgroup>
                 <optgroup label="A">
-                  <option value='{"width": "34", "height": "32"}'>A5 (14.8 x 21.0 cm)</option>
-                  <option value='{"width": "32", "height": "30"}'>A4 (21.0 x 29.7 cm)</option>
-                  <option value='{"width": "30", "height": "28"}'>A3 (29.7 x 42.0 cm)</option>
-                  <option value='{"width": "28", "height": "26"}'>A2 (42.0 x 59.4 cm)</option>
-                  <option value='{"width": "26", "height": "24"}'>A1 (59.4 x 84.1 cm)</option>
-                  <option value='{"width": "24", "height": "22"}'>A0 (84.1 x 118.9 cm)</option>
+                  <option value='{"width": "34", "height": "32",  "vwidth":"14.8", "vheight":"21.0" }'>A5 (14.8 x 21.0
+                    cm)</option>
+                  <option value='{"width": "32", "height": "30",  "vwidth":"21.0", "vheight":"29.7" }'>A4 (21.0 x 29.7
+                    cm)</option>
+                  <option value='{"width": "30", "height": "28",  "vwidth":"29.7", "vheight":"42.0" }'>A3 (29.7 x 42.0
+                    cm)</option>
+                  <option value='{"width": "28", "height": "26",  "vwidth":"42.0", "vheight":"59.4" }'>A2 (42.0 x 59.4
+                    cm)</option>
+                  <option value='{"width": "26", "height": "24",  "vwidth":"59.4", "vheight":"84.1" }'>A1 (59.4 x 84.1
+                    cm)</option>
+                  <option value='{"width": "22", "height": "18",  "vwidth":"84.1", "vheight":"118.9" }'>A0 (84.1 x 118.9
+                    cm)</option>
                 </optgroup>
               </select>
             </div>
           </div>
           <br>
-          <div id="side-tab-2">
-            <div class="tab">
-              <button class="tablinks" onclick="openTab(event, 'whiteframe')">Frames</button>
-              <button class="tablinks" onclick="openTab(event, 'mats')">Mats</button>
-              <button class="tablinks" onclick="openTab(event, 'glass')">Glass & Backing</button>
-              <button class="tablinks" onclick="openTab(event, 'print')">Printing</button>
 
-            </div>
+          <button class="collapsible" class="btn btn-primary" data-toggle="collapse" href="#frames" role="button"
+            aria-expanded="false" aria-controls="collapseExample">Frames</button>
 
-            <div id="mats" class="tabcontent">
-              
-              <fieldset>
-                <legend>Choose core color</legend>
-                <div>
-                  <input type="radio" id="whitecore" name="corecolor" value="white">
-                  <label for="white">White Core</label>
-                </div>
-                <div>
-                  <input type="radio" id="blackcore" name="corecolor" value="black">
-                  <label for="balck">Black Core</label>
-                </div>
-                <div>
-                  <input type="radio" id="nocore" name="corecolor" value="none">
-                  <label for="none">None</label>
-                </div>
-                <div>
-                  <input type="radio" id="doublewcore" name="corecolor" value="none">
-                  <label for="doublewcore">Double White Core</label>
-                </div>
-                <div>
-                  <input type="radio" id="doublebcore" name="corecolor" value="none">
-                  <label for="doublebcore">Double Black Core</label>
-                </div>
-              </fieldset>
-              <button class="tablinks" onclick="openTab(event, 'wmats')">White Core Mats</button>
-              <button class="tablinks" onclick="openTab(event, 'bmats')">Black Core Mats</button>
-              <br>
-
-            </div>
-
-            <div id="wmats" class="tabcontent">
-              <button class="tablinks" onclick="openTab(event, 'wmats')">White Core Mats</button>
-              <button class="tablinks" onclick="openTab(event, 'bmats')">Black Core Mats</button>
-              <button class="tablinks" onclick="openTab(event, 'mats')">Core Type</button>
-              <br>
-
-              <br>
-              <br>
-              <%
-              if(matwdata.length!=0){
-              var i=1;
-              matwdata.forEach(function(data){
-              %>
-              <div>
-                <p> <%=data.MTCOLOR %> : <%=data.MTCODE %></p>
-                <button id="<%=data.MTID %>" style="
-             border: azure;" value="<%=data.MTCODE %>" class="colorbutton">
-                  <span class="dot" style="background: <%=data.MTCODE %>;"></span>
-                </button>
-              </div>
-              <%  i++; }) %>
-              <% } else{ %>
-              <tr>
-                <td colspan="7">No Data Found</td>
-              </tr>
-              <% } %>
-
-
-            </div>
-            <div id="bmats" class="tabcontent">
-              <button class="tablinks" onclick="openTab(event, 'wmats')">White Core Mats</button>
-              <button class="tablinks" onclick="openTab(event, 'bmats')">Black Core Mats</button>
-              <button class="tablinks" onclick="openTab(event, 'mats')">Core Type</button>
-
-              <br>
-              <%
-              if(matbdata.length!=0){
-              var i=1;
-              matbdata.forEach(function(data){
-              %>
-              <div>
-                <p> <%=data.MTCOLOR %> : <%=data.MTCODE %></p>
-                <button id="<%=data.MTID %>" style="
-             border: azure;" value="<%=data.MTCODE %>" class="colorbutton">
-                  <span class="dot" style="background: <%=data.MTCODE %>;"></span>
-                </button>
-              </div>
-              <%  i++; }) %>
-              <% } else{ %>
-              <tr>
-                <td colspan="7">No Data Found</td>
-              </tr>
-              <% } %>
-
-
-            </div>
-
+          <div class="collapse" id="frames">
+            <button class="tablinks" onclick="openTab(event, 'whiteframe')">WHITE</button>
+            <button class="tablinks" onclick="openTab(event, 'goldframe')">GOLD</button>
+            <button class="tablinks" onclick="openTab(event, 'onsaleframe')">ONSALE</button>
+            <button class="tablinks" onclick="openTab(event, 'popularframe')">POPULAR</button>
             <div id="whiteframe" class="tabcontent">
               <p>Select frames as per your choice!</p>
 
-              <button class="tablinks" onclick="openTab(event, 'whiteframe')">WHITE</button>
-              <button class="tablinks" onclick="openTab(event, 'goldframe')">GOLD</button>
-              <button class="tablinks" onclick="openTab(event, 'onsaleframe')">ONSALE</button>
-              <button class="tablinks" onclick="openTab(event, 'popularframe')">POPULAR</button>
+
               <div id="scrollable">
 
                 <div id="frame_items">
@@ -263,10 +180,6 @@
             <div id="goldframe" class="tabcontent">
               <p>Select frames as per your choice!</p>
 
-              <button class="tablinks" onclick="openTab(event, 'whiteframe')">WHITE</button>
-              <button class="tablinks" onclick="openTab(event, 'goldframe')">GOLD</button>
-              <button class="tablinks" onclick="openTab(event, 'onsaleframe')">ONSALE</button>
-              <button class="tablinks" onclick="openTab(event, 'popularframe')">POPULAR</button>
               <div id="scrollable">
 
                 <div id="frame_items">
@@ -328,10 +241,6 @@
             <div id="popularframe" class="tabcontent">
               <p>Select frames as per your choice!</p>
 
-              <button class="tablinks" onclick="openTab(event, 'whiteframe')">WHITE</button>
-              <button class="tablinks" onclick="openTab(event, 'goldframe')">GOLD</button>
-              <button class="tablinks" onclick="openTab(event, 'onsaleframe')">ONSALE</button>
-              <button class="tablinks" onclick="openTab(event, 'popularframe')">POPULAR</button>
               <div id="scrollable">
 
                 <div id="frame_items">
@@ -393,10 +302,6 @@
             <div id="onsaleframe" class="tabcontent">
               <p>Select frames as per your choice!</p>
 
-              <button class="tablinks" onclick="openTab(event, 'whiteframe')">WHITE</button>
-              <button class="tablinks" onclick="openTab(event, 'goldframe')">GOLD</button>
-              <button class="tablinks" onclick="openTab(event, 'onsaleframe')">ONSALE</button>
-              <button class="tablinks" onclick="openTab(event, 'popularframe')">POPULAR</button>
               <div id="scrollable">
 
                 <div id="frame_items">
@@ -455,133 +360,227 @@
                 </div>
               </div>
             </div>
+          </div>
+          <button class="collapsible" class="btn btn-primary" data-toggle="collapse" href="#mats" role="button"
+            aria-expanded="false" aria-controls="collapseExample">Mats</button>
+          <div id="mats" class="collapse">
+            <button class="tablinks" onclick="openTab(event, 'wmats')">White Core Mats</button>
+            <button class="tablinks" onclick="openTab(event, 'bmats')">Black Core Mats</button>
+            <button class="tablinks" onclick="openTab(event, 'mat')">Core Type</button>
+            <div id="mat" class="tabcontent">
 
-
-
-            <div id="glass" class="tabcontent">
-
-              <div class="row">
-                <div class="col-sm-6">
-                  <h3>GLASS</h3>
-                  <div>
-                    <input type="radio" id="0" name="glass1" value="Clear Glass" onclick="getdetail(this)">
-                    <label for="glass1">Clear Glass</label>
-                  </div>
-                  <div>
-                    <input type="radio" id="1" name="glass1" value="Clear Perspex" onclick="getdetail(this)">
-                    <label for="glass1">Clear Perspex</label>
-                  </div>
-                  <div>
-                    <input type="radio" id="2" name="glass1" value="Non-Reflective Glass" onclick="getdetail(this)">
-                    <label for="glass1">Non-Reflective Glass</label>
-                  </div>
-                  <div>
-                    <input type="radio" id="3" name="glass1" value="UV Clear Glass" onclick="getdetail(this)">
-                    <label for="glass1">UV Clear Glass</label>
-                  </div>
-                  <div>
-                    <input type="radio" id="4" name="glass1" value="UV Non-Reflective Glass" onclick="getdetail(this)">
-                    <label for="glass1">UV Non-Reflective Glass</label>
-                  </div>
-                  <div>
-                    <input type="radio" id="5" name="glass1" value="NO Glass" onclick="getdetail(this)">
-                    <label for="glass1">NO Glass</label>
-                  </div>
+              <fieldset>
+                <legend>Choose core color</legend>
+                <div>
+                  <input type="radio" id="whitecore" name="corecolor" value="white">
+                  <label for="white">White Core</label>
                 </div>
-                <div class="col-sm-6">
-                  <h3>Glass Details</h3>
-                  <p id="glass-details"></p>
+                <div>
+                  <input type="radio" id="blackcore" name="corecolor" value="black">
+                  <label for="balck">Black Core</label>
+                </div>
+                <div>
+                  <input type="radio" id="nocore" name="corecolor" value="none">
+                  <label for="none">None</label>
+                </div>
+                <div>
+                  <input type="radio" id="doublewcore" name="corecolor" value="none">
+                  <label for="doublewcore">Double White Core</label>
+                </div>
+                <div>
+                  <input type="radio" id="doublebcore" name="corecolor" value="none">
+                  <label for="doublebcore">Double Black Core</label>
+                </div>
+              </fieldset>
+
+              <br>
+
+            </div>
+
+            <div id="wmats" class="tabcontent">
+
+              <br>
+
+              <br>
+              <br>
+              <%
+              if(matwdata.length!=0){
+              var i=1;
+              matwdata.forEach(function(data){
+              %>
+              <div>
+                <p> <%=data.MTCOLOR %> : <%=data.MTCODE %></p>
+                <button id="<%=data.MTID %>" style="
+             border: azure;" value="<%=data.MTCODE %>" class="colorbutton">
+                  <span class="dot" style="background: <%=data.MTCODE %>;"></span>
+                </button>
+              </div>
+              <%  i++; }) %>
+              <% } else{ %>
+              <tr>
+                <td colspan="7">No Data Found</td>
+              </tr>
+              <% } %>
+
+
+            </div>
+            <div id="bmats" class="tabcontent">
+
+
+              <br>
+              <%
+              if(matbdata.length!=0){
+              var i=1;
+              matbdata.forEach(function(data){
+              %>
+              <div>
+                <p> <%=data.MTCOLOR %> : <%=data.MTCODE %></p>
+                <button id="<%=data.MTID %>" style="
+             border: azure;" value="<%=data.MTCODE %>" class="colorbutton">
+                  <span class="dot" style="background: <%=data.MTCODE %>;"></span>
+                </button>
+              </div>
+              <%  i++; }) %>
+              <% } else{ %>
+              <tr>
+                <td colspan="7">No Data Found</td>
+              </tr>
+              <% } %>
+
+
+            </div>
+          </div>
+
+          <button class="collapsible" class="btn btn-primary" data-toggle="collapse" href="#print" role="button"
+            aria-expanded="false" aria-controls="collapseExample">Printing</button>
+          <div id="print" class="collapse">
+
+
+            <div class="row">
+              <div class="col-sm-6">
+                <h3>Printing</h3>
+
+
+                <div>
+                  <input type="radio" id="0" name="print" value="Semi-Gloss (Luster)" onclick="getprintdetail(this)">
+                  <label for="print">Semi-Gloss (Luster)</label>
+                </div>
+                <div>
+                  <input type="radio" id="1" name="print" value="High Gloss (Metallic)" onclick="getprintdetail(this)">
+                  <label for="print">High Gloss (Metallic)</label>
+                </div>
+                <div>
+                  <input type="radio" id="2" name="print" value="Matte Smooth (Archival)"
+                    onclick="getprintdetail(this)">
+                  <label for="print">Matte Smooth (Archival)</label>
+                </div>
+                <div>
+                  <input type="radio" id="3" name="print" value="No Printing (preview only)"
+                    onclick="getprintdetail(this)">
+                  <label for="print">No Printing (preview only)</label>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-sm-6">
-                  <h3>Backing</h3>
-                  <div>
-                    <input type="radio" id="0" name="back" value="MDF (Wood)" onclick="getbackdetail(this)">
-                    <label for="back">MDF (Wood)</label>
-                  </div>
-                  <div>
-                    <input type="radio" id="1" name="back" value="Adhesive Foamcore" onclick="getbackdetail(this)">
-                    <label for="back">Adhesive Foamcore</label>
-                  </div>
-                  <div>
-                    <input type="radio" id="2" name="back" value="Non-Adhesive Foamcore" onclick="getbackdetail(this)">
-                    <label for="back">Non-Adhesive Foamcore</label>
-                  </div>
-                  <div>
-                    <input type="radio" id="3" name="back" value="No Backing" onclick="getbackdetail(this)">
-                    <label for="back">No Backing</label>
-                  </div>
-
-                </div>
-                <div class="col-sm-6">
-                  <h3>Backing Details</h3>
-                  <p id="back-details"></p>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-sm-12">
-                  <h3>
-                    Hanging System
-
-                  </h3>
-                  <p>The hanging system will be set up for your frame as you see it in the preview.</p>
-                  <div>
-                    <input type="radio" id="hanger" name="hanger" value="Standback + Hanger"
-                      onclick="gethangerdetail(this)">
-                    <label for="back">Standback + Hanger</label>
-                  </div>
-                  <div>
-                    <input type="radio" id="hanger" name="hanger" value="Metal Hanger" onclick="gethangerdetail(this)">
-                    <label for="back">Metal Hanger</label>
-                  </div>
-                  <div>
-                    <input type="radio" id="hanger" name="hanger" value="D-rings & String"
-                      onclick="gethangerdetail(this)">
-                    <label for="back">D-rings & String</label>
-                  </div>
-                </div>
+              <div class="col-sm-6">
+                <h3>Printing Details</h3>
+                <p id="print-details"></p>
               </div>
 
             </div>
-            <div id="print" class="tabcontent">
+          </div>
+          <button class="collapsible" class="btn btn-primary" data-toggle="collapse" href="#glass" role="button"
+            aria-expanded="false" aria-controls="collapseExample">Glass</button>
+          <div id="glass" class="collapse">
 
-              <div class="row">
-                <div class="col-sm-6">
-                  <h3>Printing</h3>
 
 
-                  <div>
-                    <input type="radio" id="0" name="print" value="Semi-Gloss (Luster)" onclick="getprintdetail(this)">
-                    <label for="print">Semi-Gloss (Luster)</label>
-                  </div>
-                  <div>
-                    <input type="radio" id="1" name="print" value="High Gloss (Metallic)"
-                      onclick="getprintdetail(this)">
-                    <label for="print">High Gloss (Metallic)</label>
-                  </div>
-                  <div>
-                    <input type="radio" id="2" name="print" value="Matte Smooth (Archival)"
-                      onclick="getprintdetail(this)">
-                    <label for="print">Matte Smooth (Archival)</label>
-                  </div>
-                  <div>
-                    <input type="radio" id="3" name="print" value="No Printing (preview only)"
-                      onclick="getprintdetail(this)">
-                    <label for="print">No Printing (preview only)</label>
-                  </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <h3>GLASS</h3>
+                <div>
+                  <input type="radio" id="0" name="glass1" value="Clear Glass" onclick="getdetail(this)">
+                  <label for="glass1">Clear Glass</label>
                 </div>
-                <div class="col-sm-6">
-                  <h3>Printing Details</h3>
-                  <p id="print-details"></p>
+                <div>
+                  <input type="radio" id="1" name="glass1" value="Clear Perspex" onclick="getdetail(this)">
+                  <label for="glass1">Clear Perspex</label>
+                </div>
+                <div>
+                  <input type="radio" id="2" name="glass1" value="Non-Reflective Glass" onclick="getdetail(this)">
+                  <label for="glass1">Non-Reflective Glass</label>
+                </div>
+                <div>
+                  <input type="radio" id="3" name="glass1" value="UV Clear Glass" onclick="getdetail(this)">
+                  <label for="glass1">UV Clear Glass</label>
+                </div>
+                <div>
+                  <input type="radio" id="4" name="glass1" value="UV Non-Reflective Glass" onclick="getdetail(this)">
+                  <label for="glass1">UV Non-Reflective Glass</label>
+                </div>
+                <div>
+                  <input type="radio" id="5" name="glass1" value="NO Glass" onclick="getdetail(this)">
+                  <label for="glass1">NO Glass</label>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <h3>Glass Details</h3>
+                <p id="glass-details"></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <h3>Backing</h3>
+                <div>
+                  <input type="radio" id="0" name="back" value="MDF (Wood)" onclick="getbackdetail(this)">
+                  <label for="back">MDF (Wood)</label>
+                </div>
+                <div>
+                  <input type="radio" id="1" name="back" value="Adhesive Foamcore" onclick="getbackdetail(this)">
+                  <label for="back">Adhesive Foamcore</label>
+                </div>
+                <div>
+                  <input type="radio" id="2" name="back" value="Non-Adhesive Foamcore" onclick="getbackdetail(this)">
+                  <label for="back">Non-Adhesive Foamcore</label>
+                </div>
+                <div>
+                  <input type="radio" id="3" name="back" value="No Backing" onclick="getbackdetail(this)">
+                  <label for="back">No Backing</label>
+                </div>
+
+              </div>
+              <div class="col-sm-6">
+                <h3>Backing Details</h3>
+                <p id="back-details"></p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12">
+                <h3>
+                  Hanging System
+
+                </h3>
+                <p>The hanging system will be set up for your frame as you see it in the preview.</p>
+                <div>
+                  <input type="radio" id="hanger" name="hanger" value="Standback + Hanger"
+                    onclick="gethangerdetail(this)">
+                  <label for="back">Standback + Hanger</label>
+                </div>
+                <div>
+                  <input type="radio" id="hanger" name="hanger" value="Metal Hanger" onclick="gethangerdetail(this)">
+                  <label for="back">Metal Hanger</label>
+                </div>
+                <div>
+                  <input type="radio" id="hanger" name="hanger" value="D-rings & String"
+                    onclick="gethangerdetail(this)">
+                  <label for="back">D-rings & String</label>
                 </div>
               </div>
             </div>
 
 
           </div>
-          <br>
+
+
           <div id="side-tab-3">
             <h4>PRODUCT SUMMARY :</h4>
             <!-- <div>

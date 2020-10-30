@@ -339,7 +339,7 @@ if (document.getElementById('cus_Frame')) {
         let ctx = canvasBkGr.getContext('2d');
 
         // clearing previous image picture
-        ctx.clearRect(0, 0, 600, 800);
+        ctx.clearRect(0, 0, 800, 800);
         let img = new Image();
         img.src = photoImage;
 
@@ -360,7 +360,7 @@ if (document.getElementById('cus_Frame')) {
         let ctx = canvasBkGr.getContext('2d');
 
         // clearing previous image picture
-        ctx.clearRect(0, 0, 600, 600);
+        ctx.clearRect(0, 0, 800, 800);
         let img = new Image();
         img.src = photoImage;
 
